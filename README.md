@@ -1,2 +1,2 @@
 # Coursework-Archive
-An archive of my coursework programs.
+An archive of my coursework.
