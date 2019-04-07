@@ -1,0 +1,40 @@
+<project name="SimpleWebServer" default="run" basedir=".">
+
+   <property name="src" location="src"/>
+   <property name="build" location="build"/>
+   <property name="dist" location="dist"/>
+   <property name="main-class" value="WebServer"/>
+
+   <target name= "clean">
+      <delete dir="${build}"/>
+      <delete dir="${dist}"/>
+   </target>
+
+   <target name="init" depends="clean">
+      <tstamp/>
+      <mkdir dir="${build}"/>
+   </target>
+
+   <target name="compile" depends="init">
+      <javac srcdir="${src}"
+         destdir="${build}"
+         includeantruntime="false"
+         fork="true">
+      </javac>
+   </target>
+
+   <target name="dist" depends="compile">
+      <mkdir dir="${dist}/lib"/>
+
+      <jar jarfile="${dist}/lib/SimpleWebServer-${DSTAMP}.jar" basedir="${build}">
+         <manifest>
+            <attribute name="Main-Class" value="${main-class}"/>
+         </manifest>
+      </jar>
+   </target>
+
+   <target name="run" depends="dist">
+      <java jar="${dist}/lib/SimpleWebServer-${DSTAMP}.jar" fork="true"/>
+   </target>
+
+</project>
