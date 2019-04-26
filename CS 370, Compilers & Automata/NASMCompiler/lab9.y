@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
-/*#include "lex.yy.c"*/
 #include "ast.h"
 #include "symtable.c"
 #include "emitAST.c"

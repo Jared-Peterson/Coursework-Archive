@@ -1,0 +1,1 @@
+These two files are meant to control an arduino micro-controller to take in analog signals from light sensors, and position a solar panel in an orientation that it is pointed directly at the source of light.

@@ -1,10 +1,5 @@
-/*  Symbol Table --linked list
-    Used for Compilers class
-
-    Modified Spring 2015 to allow for name to pointed to by symtable, instead of copied, since the name is copied
-    into the heap
-
-    Modified to have levels.  A level 0 means global variable, other levels means in range of the function.  We
+/*  
+    A level 0 means global variable, other levels means in range of the function.  We
     start out our offsets at 0 (from stack pointer) for level 1,,,when we enter a functional declaration.
     We increment offset each time we insert a new variable.  A variable is considered to be valid if it is found in
     the symbol table at our level or lesser level.  If at 0, then it is global.  
@@ -98,7 +93,6 @@ void PrintSym(struct SymbTab *s)
 
 
 /*  General display to see what is our symbol table */
-
 void Display()
 {
    int i;
@@ -112,53 +106,42 @@ void Display()
       }
 }
 
-/*  Search for a symbol name at level or below.  We have to do multiple passes into the symbol table because we have to find
-   the name closest to us 
-
-
-  If recur is non-zero, then we look through all of the levels, otherwise, only our level 
-   We return a pointer to a SymbolTab structure so that we can use other functions/methods to get the attributes */
-
- 
-
-
+/*  
+   Search for a symbol name at level or below.  We have to do multiple passes into the symbol table because we have to find
+   the name closest to us If recur is non-zero, then we look through all of the levels, otherwise, only our level 
+   We return a pointer to a SymbolTab structure so that we can use other functions/methods to get the attributes 
+*/
 struct SymbTab * Search(char name[], int level, int recur)
 {
    int i,flag=0;
    struct SymbTab *p;
 
   /* for each level, try to find our symbol */
-   while (level >= 0)
-    {
+  while (level >= 0)
+  {
        p=first;
        while (p!=NULL)
-        {
-         if((strcmp(p->name,name)==0) && (p->level == level))
+       {
+       	   if((strcmp(p->name,name)==0) && (p->level == level))
            return p;
-         p=p->next;
-        }
+           p=p->next;
+       }
        if (recur == 0) return (NULL);   /* we did not find it at our level */
        level--; /* check the next level up */
-    }
-
+  }
 
    return  NULL;  /* did not find it, return 0 */
 }
 
 /* Remove all enteries that have the indicated level
    We need to take care about updating first pointer into the linked list when we are deleting edge elements */
-
-
 int Delete(int level)
 {
     struct SymbTab *p,*f=NULL;  /* we follow with pointer f */
     int SIZE=0;
     p=first;
-
     
-    
-  /* cruise through the list */
-
+    /* cruise through the list */
     while (p != NULL)
       {
         /* do we match? */

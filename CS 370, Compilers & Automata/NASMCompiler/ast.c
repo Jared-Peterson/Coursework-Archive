@@ -4,7 +4,6 @@
 ASTnode *ASTCreateNode(enum ASTtype mytype)
 {
     ASTnode *p;
-    //if (mydebug) fprintf(stderr,"Creating AST Node \n");
     p=(ASTnode *)malloc(sizeof(ASTnode));
     p->type=mytype;
     p->next=NULL;
