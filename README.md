@@ -1,3 +1,3 @@
 # Coursework-Archive
 
-This is an archive of my coursework that I use as a preview of past projects I have been apart of for my resume.
+This is an archive of my coursework that I use to preview past projects I have been apart mainly for my resume.
