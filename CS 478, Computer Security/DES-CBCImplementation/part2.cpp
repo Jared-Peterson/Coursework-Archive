@@ -23,10 +23,10 @@ int main(){
    unsigned char* desKey = (unsigned char*) malloc(8*sizeof(char));
 
     int choice;
-    printf("please enter a 1 or 0 if you wanna generate your own key or provide your own \n");
+    printf("Please enter 1 or 0 if you want to generate a key or provide your own respectively. \n");
     cin >> choice;
     if(choice != 0 && choice !=1){
-    	printf("please enter a 1 or 0 \n");
+    	printf("Please enter a 1 or 0. \n");
         return 1;
     }
       if(choice == 1){
@@ -48,7 +48,7 @@ int main(){
       } //end key generator code 
 
     else if(choice == 0){
-        printf("what is your key file? \n");
+        printf("What is your key file? \n");
         scanf("%s", &temp);
         keyFile = fopen(temp,"r");
 	if(keyFile==NULL){
@@ -73,10 +73,10 @@ int main(){
 
 
      char choice2;
-     printf("did you want to Encrypt or Decrypt? (e/d) \n");
+     printf("Do you want to encrypt or decrypt? (e/d) \n");
       cin >> choice2; 
        if(choice2 != 'e' && choice2 !='d'){
-    	printf("please enter an 'e' or 'd' \n");
+    	printf("Please enter an 'e' or 'd'. \n");
         return 1;
    	}
 
@@ -87,14 +87,14 @@ int main(){
 */
 
       if(choice2 == 'e'){
-	printf("Please enter the plain text to be encrypted \n");
+	printf("Please enter the plain text file to be encrypted. \n");
 	scanf("%s", &temp);
 	input = fopen(temp,"r");
 	if(input==NULL){
 	   printf("%s does not exist \n",temp);
 	   return 1;
 	}
-         printf("The cipher will be put in cipher.txt \n");
+         printf("The cipher will be put into cipher.txt \n");
 	 output = fopen("cipher.txt","wb");
   
        //encrypt stuff
@@ -156,7 +156,7 @@ int main(){
 */
 
         else if(choice2 == 'd'){
-	printf("Please enter the cipher text to be decrypted \n");
+	printf("Please enter the cipher text file to be decrypted. \n");
 	scanf("%s", &temp);
 	input = fopen(temp,"r");
 	if(input==NULL){
@@ -164,7 +164,7 @@ int main(){
 	   return 1;
 	}
 
-      printf("The decrypted cipher will be put in cipherdecrpyt.txt \n");
+      printf("The decrypted cipher text will be put into cipherdecrypt.txt \n");
       output = fopen("cipherdecrypt.txt","wb");
 
 	printf("Decrypting: \n");
